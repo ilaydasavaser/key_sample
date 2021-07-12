@@ -13,12 +13,12 @@ class PositionedTilesState extends State<PositionedTiles> {
     Padding(
       // Place the keys at the *top* of the tree of the items in the collection.
       key: UniqueKey(),
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: StatefulColorfulTile(),
     ),
     Padding(
       key: UniqueKey(),
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(0.0),
       child: StatefulColorfulTile(),
     ),
   ];
@@ -27,17 +27,22 @@ class PositionedTilesState extends State<PositionedTiles> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Row(children: tiles),
-          floatingActionButton: FloatingActionButton(
-            child: Icon(
-              Icons.sentiment_very_satisfied,
-            ),
-            onPressed: swapTiles,
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: tiles,
           ),
-        
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(
+            Icons.sentiment_very_satisfied,
+          ),
+          onPressed: swapTiles,
+        ),
       ),
     );
-  }
+  } //floatingAction onPressed
 
   swapTiles() {
     setState(() {
@@ -65,9 +70,12 @@ class ColorfulTileState extends State<StatefulColorfulTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: myColor,
-        child: Padding(
-          padding: EdgeInsets.all(70.0),
-        ));
+      color: myColor,
+      width:140,
+      height: 140,
+      // child: Padding(
+      //   padding: EdgeInsets.all(70.0),
+      // ),
+    );
   }
 }
