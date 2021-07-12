@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:key_sample/helper/differentPrintHelper.dart';
+import 'package:key_sample/helper/printHelper.dart';
 import 'package:key_sample/helper/uniqueColorGenerator.dart';
 
 void main() => runApp(MaterialApp(home: PositionedTiles()));
@@ -29,9 +31,18 @@ class PositionedTilesState extends State<PositionedTiles> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: tiles,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: tiles,
+              ),
+              TextButton(
+                  onPressed: () {
+                    PrintHelper().customPrint();
+                  },
+                  child: Text("Press"))
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -45,6 +56,10 @@ class PositionedTilesState extends State<PositionedTiles> {
   } //floatingAction onPressed
 
   swapTiles() {
+    //print("fab pressed");
+// PrintHelper().customPrint();
+    DiffentPrintHelper().customPrint();
+
     setState(() {
       tiles.insert(1, tiles.removeAt(0));
     });
@@ -71,7 +86,7 @@ class ColorfulTileState extends State<StatefulColorfulTile> {
   Widget build(BuildContext context) {
     return Container(
       color: myColor,
-      width:140,
+      width: 140,
       height: 140,
       // child: Padding(
       //   padding: EdgeInsets.all(70.0),
