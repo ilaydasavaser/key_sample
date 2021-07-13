@@ -29,6 +29,9 @@ class PositionedTilesState extends State<PositionedTiles> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Dev Environment"),
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -38,10 +41,11 @@ class PositionedTilesState extends State<PositionedTiles> {
                 children: tiles,
               ),
               TextButton(
-                  onPressed: () {
-                    PrintHelper().customPrint();
-                  },
-                  child: Text("Please Press"))
+                onPressed: () {
+                  PrintHelper().customPrint();
+                },
+                child: Text("Dev Press"),
+              )
             ],
           ),
         ),
