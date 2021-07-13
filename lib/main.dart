@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:key_sample/helper/differentPrintHelper.dart';
 import 'package:key_sample/helper/printHelper.dart';
 import 'package:key_sample/helper/uniqueColorGenerator.dart';
+import 'package:key_sample/views/secondPage.dart';
 
-void main() => runApp(MaterialApp(home: PositionedTiles()));
+void main() => runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: PositionedTiles(),
+      ),
+    );
 
 class PositionedTiles extends StatefulWidget {
   @override
@@ -27,8 +33,16 @@ class PositionedTilesState extends State<PositionedTiles> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Prod Environment",
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -38,10 +52,35 @@ class PositionedTilesState extends State<PositionedTiles> {
                 children: tiles,
               ),
               TextButton(
-                  onPressed: () {
-                    PrintHelper().customPrint();
-                  },
-                  child: Text("Please Press"))
+                onPressed: () {
+                  PrintHelper().customPrint();
+
+                  print("object");
+                },
+                child: Text("Please Press"),
+              ),
+              SizedBox(
+                height: 70,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Next Page"),
+                  IconButton(
+                    onPressed: () {
+                      print("Navigate To ...");
+                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondPage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.navigate_next,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
