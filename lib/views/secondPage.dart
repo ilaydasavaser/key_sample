@@ -11,6 +11,9 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   final _formKey = GlobalKey<FormState>();
 
+  String emailValidationMessage = "";
+  String passwordValidationMessage = "";
+
   @override
   void initState() {
     super.initState();
@@ -72,18 +75,25 @@ class _SecondPageState extends State<SecondPage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           hintText: "Email",
                           border: InputBorder.none,
+                          errorStyle: TextStyle(
+                            fontSize: 0,
+                          )
                         ),
                         validator: (value) {
                           print("value");
                           print(value);
                           if (value == null || value == "") {
-                            return "Please enter email";
+                            setState(() {
+                              emailValidationMessage = "Please enter email";
+                            });
+
+                            return "";
                           }
 
                           bool emailValid = RegExp(
@@ -91,12 +101,32 @@ class _SecondPageState extends State<SecondPage> {
                               .hasMatch(value);
 
                           if (!emailValid) {
-                            return "Please enter a valid email";
+                            setState(() {
+                              emailValidationMessage =
+                                  "Please enter a valid email";
+                            });
+                            return "";
                           }
                         },
                       ),
                     ),
                   ),
+                  if (emailValidationMessage != "")
+                    Container(
+                      width: width,
+                      // color: Colors.red,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        child: Text(
+                          emailValidationMessage,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 12
+                          ),
+                        ),
+                      ),
+                    ),
                   // Spacer(),
                   SizedBox(
                     height: 10,
@@ -117,10 +147,18 @@ class _SecondPageState extends State<SecondPage> {
                         decoration: InputDecoration(
                           hintText: "Password",
                           border: InputBorder.none,
+                           errorStyle: TextStyle(
+                            fontSize: 0,
+                          )
                         ),
                         validator: (value) {
                           if (value == null || value == "") {
-                            return "Please enter password";
+                            setState(() {
+                              passwordValidationMessage =
+                                  "Please enter password";
+                            });
+
+                            return "";
                           }
 
 // ^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$
@@ -130,7 +168,9 @@ class _SecondPageState extends State<SecondPage> {
                               .hasMatch(value);
 
                           if (!isStrong) {
-                            return """Please enter a strong password. \nYour password should contain these rules:
+                            setState(() {
+                              passwordValidationMessage =
+                                  """Please enter a strong password. \nYour password should contain these rules:
                             
 8 characters length
 2 letters in Upper Case
@@ -138,11 +178,30 @@ class _SecondPageState extends State<SecondPage> {
 2 numerals (0-9)
 3 letters in Lower Case
                             """;
+                            });
+                            return "";
                           }
                         },
                       ),
                     ),
                   ),
+                  if (passwordValidationMessage != "")
+                    Container(
+                      width: width,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        child: Text(
+                          passwordValidationMessage,
+                          // textAlign: ,
+                          style: TextStyle(
+                            color: Colors.red,
+                            // fontWeight:
+                          fontSize:  12
+                          ),
+                        ),
+                      ),
+                    ),
+
                   TextButton(
                     onPressed: () {
                       print("login pressed");
