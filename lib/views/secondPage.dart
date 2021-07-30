@@ -63,54 +63,85 @@ class _SecondPageState extends State<SecondPage> {
                     height: 30,
                   ),
                   // input alanı sağlar.
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(hintText: "Email"),
-                    validator: (value) {
-                      print("value");
-                      print(value);
-                      if (value == null || value == "") {
-                        return "Please enter email";
-                      }
-
-                      bool emailValid = RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(value);
-
-                      if (!emailValid) {
-                        return "Please enter a valid email";
-                      }
-                    },
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    obscuringCharacter: '*',
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(
-                      hintText: "Password",
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue[50],
+                      border: Border.all(
+                        color: Colors.blue,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    validator: (value) {
-                      if (value == null || value == "") {
-                        return "Please enter password";
-                      }
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          border: InputBorder.none,
+                        ),
+                        validator: (value) {
+                          print("value");
+                          print(value);
+                          if (value == null || value == "") {
+                            return "Please enter email";
+                          }
+
+                          bool emailValid = RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value);
+
+                          if (!emailValid) {
+                            return "Please enter a valid email";
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                  // Spacer(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.blue,
+                        ),
+                        color: Colors.blue[50],
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: TextFormField(
+                        obscureText: true,
+                        obscuringCharacter: '*',
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          border: InputBorder.none,
+                        ),
+                        validator: (value) {
+                          if (value == null || value == "") {
+                            return "Please enter password";
+                          }
 
 // ^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$
 
-                      bool isStrong = RegExp(
-                              r"^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
-                          .hasMatch(value);
+                          bool isStrong = RegExp(
+                                  r"^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
+                              .hasMatch(value);
 
-                      if (!isStrong) {
-                        return """Please enter a strong password. \nYour password should contain these rules:
-                        
+                          if (!isStrong) {
+                            return """Please enter a strong password. \nYour password should contain these rules:
+                            
 8 characters length
 2 letters in Upper Case
 1 Special Character (!@#\$&*)
 2 numerals (0-9)
 3 letters in Lower Case
-                        """;
-                      }
-                    },
+                            """;
+                          }
+                        },
+                      ),
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
