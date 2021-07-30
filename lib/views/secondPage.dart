@@ -75,7 +75,7 @@ class _SecondPageState extends State<SecondPage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -83,7 +83,18 @@ class _SecondPageState extends State<SecondPage> {
                           border: InputBorder.none,
                           errorStyle: TextStyle(
                             fontSize: 0,
-                          )
+                          ),
+                          // prefix: Text("data"),
+                          prefixIcon: Container(
+                            width: 24,
+                            height: 24,
+                            // color: Colors.red,
+                            child: Icon(
+                              Icons.email,
+                              color: Colors.grey,
+                              size: 24,
+                            ),
+                          ),
                         ),
                         validator: (value) {
                           print("value");
@@ -120,10 +131,7 @@ class _SecondPageState extends State<SecondPage> {
                         child: Text(
                           emailValidationMessage,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 12
-                          ),
+                          style: TextStyle(color: Colors.red, fontSize: 12),
                         ),
                       ),
                     ),
@@ -139,18 +147,27 @@ class _SecondPageState extends State<SecondPage> {
                         color: Colors.blue[50],
                         borderRadius: BorderRadius.circular(20)),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: TextFormField(
                         obscureText: true,
                         obscuringCharacter: '*',
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
-                          hintText: "Password",
-                          border: InputBorder.none,
-                           errorStyle: TextStyle(
-                            fontSize: 0,
-                          )
-                        ),
+                            hintText: "Password",
+                            border: InputBorder.none,
+                            prefixIcon: Container(
+                              width: 24,
+                              height: 24,
+                              // color: Colors.red,
+                              child: Icon(
+                                Icons.vpn_key,
+                                color: Colors.grey,
+                                size: 24,
+                              ),
+                            ),
+                            errorStyle: TextStyle(
+                              fontSize: 0,
+                            )),
                         validator: (value) {
                           if (value == null || value == "") {
                             setState(() {
@@ -194,10 +211,9 @@ class _SecondPageState extends State<SecondPage> {
                           passwordValidationMessage,
                           // textAlign: ,
                           style: TextStyle(
-                            color: Colors.red,
-                            // fontWeight:
-                          fontSize:  12
-                          ),
+                              color: Colors.red,
+                              // fontWeight:
+                              fontSize: 12),
                         ),
                       ),
                     ),
