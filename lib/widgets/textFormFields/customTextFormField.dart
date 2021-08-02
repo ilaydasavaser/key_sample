@@ -1,70 +1,73 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:key_sample/providers/appStateProvider.dart';
+import 'package:provider/provider.dart';
 
-// class CustomTextFormField extends StatefulWidget {
-//   @override
-//   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
-// }
+class CustomTextFormField extends StatefulWidget {
+  // ortak için alanlar
+  final String? hintText;
+  final TextInputType? keyboardType;
+  final IconData? prefixIcon;
+  final String? Function(String?)? validator;
 
-// class _CustomTextFormFieldState extends State<CustomTextFormField> {
-//   @override
-//   Widget build(BuildContext context) {
-   
-//    return Container(
-//                   decoration: BoxDecoration(
-//                     color: Colors.blue[50],
-//                     border: Border.all(
-//                       color: Colors.blue,
-//                     ),
-//                     borderRadius: BorderRadius.circular(20),
-//                   ),
-//                   child: Padding(
-//                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-//                     child: TextFormField(
-//                       keyboardType: TextInputType.emailAddress,
-//                       decoration: InputDecoration(
-//                         hintText: "Email",
-//                         border: InputBorder.none,
-//                         errorStyle: TextStyle(
-//                           fontSize: 0,
-//                         ),
-//                         // prefix: Text("data"),
-//                         prefixIcon: Container(
-//                           width: 24,
-//                           height: 24,
-//                           // color: Colors.red,
-//                           child: Icon(
-//                             Icons.email,
-//                             color: Colors.grey,
-//                             size: 24,
-//                           ),
-//                         ),
-//                       ),
-//                       validator: (value) {
-//                         print("value");
-//                         print(value);
-//                         if (value == null || value == "") {
-//                           setState(() {
-//                             emailValidationMessage = "Please enter email";
-//                           });
+  // password için alanlar
+  final bool? obscureText;
+  final String? obscuringCharacter;
 
-//                           return "";
-//                         }
+  const CustomTextFormField({
+    this.hintText,
+    this.keyboardType,
+    this.prefixIcon,
+    this.validator,
+    this.obscureText = false,
+    this.obscuringCharacter = '*',
+  });
 
-//                         bool emailValid = RegExp(
-//                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-//                             .hasMatch(value);
+  @override
+  _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
+}
 
-//                         if (!emailValid) {
-//                           setState(() {
-//                             emailValidationMessage =
-//                                 "Please enter a valid email";
-//                           });
-//                           return "";
-//                         }
-//                       },
-//                     ),
-//                   ),
-//                 );
-  
-//   }
-// }
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  late AppStateProvider appStateProvider;
+
+  @override
+  Widget build(BuildContext context) {
+    appStateProvider = Provider.of<AppStateProvider>(context);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.blue[50],
+        border: Border.all(
+          color: Colors.blue,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+        child: TextFormField(
+          obscureText: widget.obscureText!,
+          obscuringCharacter: widget.obscuringCharacter!,
+          keyboardType: widget.keyboardType,
+          decoration: InputDecoration(
+            hintText: widget.hintText,
+            border: InputBorder.none,
+            errorStyle: TextStyle(
+              fontSize: 0,
+            ),
+            // prefix: Text("data"),
+            prefixIcon: Container(
+              width: 24,
+              height: 24,
+              // color: Colors.red,
+              child: Icon(
+                widget.prefixIcon,
+                color: Colors.grey,
+                size: 24,
+              ),
+            ),
+          ),
+          validator: widget.validator,
+        ),
+      ),
+    );
+  }
+}

@@ -18,4 +18,15 @@ class AppStateProvider with ChangeNotifier {
 //     _text = text;
 //     notifyListeners();
 //   }
+
+String _emailValidationMessage = "";
+
+get getEmailValidationMessage => _emailValidationMessage;
+
+void setEmailValidationMessage(String message) {
+  _emailValidationMessage = message;
+  notifyListeners();
+}
+
+
 }

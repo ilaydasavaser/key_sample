@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:key_sample/providers/appStateProvider.dart';
 import 'package:key_sample/views/thirdPage.dart';
+import 'package:key_sample/widgets/textFormFields/customTextFormField.dart';
 import 'package:provider/provider.dart';
 
 class SecondPage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _SecondPageState extends State<SecondPage> {
     // double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-         title: Text("Second Page" ),
+        title: Text("Second Page"),
         // title: Text("Second Page"),
         leading: Container(),
       ),
@@ -60,7 +61,8 @@ class _SecondPageState extends State<SecondPage> {
                     child: Column(
                       children: [
                         Text("Here is second page!"),
-                        Text("Transferred data is: " + appStateProvider.getTextEditingController.text),
+                        Text("Transferred data is: " +
+                            appStateProvider.getTextEditingController.text),
                         TextButton(
                           onPressed: () {
                             Navigator.of(context)
@@ -76,70 +78,41 @@ class _SecondPageState extends State<SecondPage> {
                     height: 30,
                   ),
                   // input alanı sağlar.
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blue[50],
-                      border: Border.all(
-                        color: Colors.blue,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          hintText: "Email",
-                          border: InputBorder.none,
-                          errorStyle: TextStyle(
-                            fontSize: 0,
-                          ),
-                          // prefix: Text("data"),
-                          prefixIcon: Container(
-                            width: 24,
-                            height: 24,
-                            // color: Colors.red,
-                            child: Icon(
-                              Icons.email,
-                              color: Colors.grey,
-                              size: 24,
-                            ),
-                          ),
-                        ),
-                        validator: (value) {
-                          print("value");
-                          print(value);
-                          if (value == null || value == "") {
-                            setState(() {
-                              emailValidationMessage = "Please enter email";
-                            });
 
-                            return "";
-                          }
+                  CustomTextFormField(
+                    hintText: "Email",
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIcon: Icons.email,
+                    validator: (value) {
+                      print("value");
+                      print(value);
+                      if (value == null || value == "") {
+                        appStateProvider
+                            .setEmailValidationMessage("Please enter email");
 
-                          bool emailValid = RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(value);
+                        return "";
+                      }
 
-                          if (!emailValid) {
-                            setState(() {
-                              emailValidationMessage =
-                                  "Please enter a valid email";
-                            });
-                            return "";
-                          }
-                        },
-                      ),
-                    ),
+                      bool emailValid = RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value);
+
+                      if (!emailValid) {
+                        appStateProvider.setEmailValidationMessage(
+                            "Please enter a valid email");
+
+                        return "";
+                      }
+                    },
                   ),
-                  if (emailValidationMessage != "")
+                  if (appStateProvider.getEmailValidationMessage != "")
                     Container(
                       width: width,
                       // color: Colors.red,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                         child: Text(
-                          emailValidationMessage,
+                          appStateProvider.getEmailValidationMessage,
                           textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.red, fontSize: 12),
                         ),
@@ -149,55 +122,34 @@ class _SecondPageState extends State<SecondPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blue,
-                        ),
-                        color: Colors.blue[50],
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                      child: TextFormField(
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                            hintText: "Password",
-                            border: InputBorder.none,
-                            prefixIcon: Container(
-                              width: 24,
-                              height: 24,
-                              // color: Colors.red,
-                              child: Icon(
-                                Icons.vpn_key,
-                                color: Colors.grey,
-                                size: 24,
-                              ),
-                            ),
-                            errorStyle: TextStyle(
-                              fontSize: 0,
-                            )),
-                        validator: (value) {
-                          if (value == null || value == "") {
-                            setState(() {
-                              passwordValidationMessage =
-                                  "Please enter password";
-                            });
 
-                            return "";
-                          }
+// password kutucuğu
+                  CustomTextFormField(
+                    hintText: "Password",
+                    keyboardType: TextInputType.visiblePassword,
+
+                    obscureText: true,
+// obscuringCharacter
+                    prefixIcon: Icons.vpn_key,
+                    validator: (value) {
+                      if (value == null || value == "") {
+                        setState(() {
+                          passwordValidationMessage = "Please enter password";
+                        });
+
+                        return "";
+                      }
 
 // ^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$
 
-                          bool isStrong = RegExp(
-                                  r"^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
-                              .hasMatch(value);
+                      bool isStrong = RegExp(
+                              r"^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
+                          .hasMatch(value);
 
-                          if (!isStrong) {
-                            setState(() {
-                              passwordValidationMessage =
-                                  """Please enter a strong password. \nYour password should contain these rules:
+                      if (!isStrong) {
+                        setState(() {
+                          passwordValidationMessage =
+                              """Please enter a strong password. \nYour password should contain these rules:
                             
 8 characters length
 2 letters in Upper Case
@@ -205,13 +157,12 @@ class _SecondPageState extends State<SecondPage> {
 2 numerals (0-9)
 3 letters in Lower Case
                             """;
-                            });
-                            return "";
-                          }
-                        },
-                      ),
-                    ),
+                        });
+                        return "";
+                      }
+                    },
                   ),
+
                   if (passwordValidationMessage != "")
                     Container(
                       width: width,
@@ -223,7 +174,7 @@ class _SecondPageState extends State<SecondPage> {
                           style: TextStyle(
                               color: Colors.red,
                               // fontWeight:
-                              fontSize: 12),
+                              fontSize: 12,),
                         ),
                       ),
                     ),
