@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:key_sample/providers/appStateProvider.dart';
 import 'package:key_sample/views/thirdPage.dart';
+import 'package:provider/provider.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({Key? key}) : super(key: key);
@@ -14,8 +16,12 @@ class _SecondPageState extends State<SecondPage> {
   String emailValidationMessage = "";
   String passwordValidationMessage = "";
 
+  late AppStateProvider appStateProvider;
+
   @override
   void initState() {
+    appStateProvider = Provider.of<AppStateProvider>(context, listen: false);
+
     super.initState();
   }
 
@@ -26,11 +32,14 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
+    appStateProvider = Provider.of(context);
+
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Page"),
+         title: Text("Second Page" ),
+        // title: Text("Second Page"),
         leading: Container(),
       ),
       body: Container(
@@ -51,6 +60,7 @@ class _SecondPageState extends State<SecondPage> {
                     child: Column(
                       children: [
                         Text("Here is second page!"),
+                        Text("Transferred data is: " + appStateProvider.getTextEditingController.text),
                         TextButton(
                           onPressed: () {
                             Navigator.of(context)

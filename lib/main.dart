@@ -2,14 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:key_sample/helper/differentPrintHelper.dart';
 import 'package:key_sample/helper/printHelper.dart';
 import 'package:key_sample/helper/uniqueColorGenerator.dart';
+import 'package:key_sample/providers/appStateProvider.dart';
 import 'package:key_sample/views/secondPage.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
 
-void main() => runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: PositionedTiles(),
+void main() 
+
+{
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<AppStateProvider> (create: (context) => AppStateProvider()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: PositionedTiles(),
+        ),
       ),
     );
+
+}
+
 
 class PositionedTiles extends StatefulWidget {
   @override
@@ -31,10 +45,16 @@ class PositionedTilesState extends State<PositionedTiles> {
     ),
   ];
 
+late  AppStateProvider appStateProvider;
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+appStateProvider = Provider.of<AppStateProvider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -62,6 +82,18 @@ class PositionedTilesState extends State<PositionedTiles> {
               SizedBox(
                 height: 70,
               ),
+              Container(
+                height: 70,
+                width: 300,
+                child: TextFormField(
+                  controller: appStateProvider.getTextEditingController,
+
+                  // onChanged: (val) {
+                  //   print(val);
+                  //   appStateProvider.setText(val);
+                  // },
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -69,7 +101,8 @@ class PositionedTilesState extends State<PositionedTiles> {
                   IconButton(
                     onPressed: () {
                       print("Navigate To ...");
-                      
+                      print(appStateProvider.getTextEditingController.text);
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SecondPage()),
