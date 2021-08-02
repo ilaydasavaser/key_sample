@@ -83,27 +83,7 @@ class _SecondPageState extends State<SecondPage> {
                     hintText: "Email",
                     keyboardType: TextInputType.emailAddress,
                     prefixIcon: Icons.email,
-                    validator: (value) {
-                      print("value");
-                      print(value);
-                      if (value == null || value == "") {
-                        appStateProvider
-                            .setEmailValidationMessage("Please enter email");
-
-                        return "";
-                      }
-
-                      bool emailValid = RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(value);
-
-                      if (!emailValid) {
-                        appStateProvider.setEmailValidationMessage(
-                            "Please enter a valid email");
-
-                        return "";
-                      }
-                    },
+                    validator: emailValidator,
                   ),
                   if (appStateProvider.getEmailValidationMessage != "")
                     Container(
@@ -129,38 +109,9 @@ class _SecondPageState extends State<SecondPage> {
                     keyboardType: TextInputType.visiblePassword,
 
                     obscureText: true,
-// obscuringCharacter
+                    // obscuringCharacter:"x",
                     prefixIcon: Icons.vpn_key,
-                    validator: (value) {
-                      if (value == null || value == "") {
-                        setState(() {
-                          passwordValidationMessage = "Please enter password";
-                        });
-
-                        return "";
-                      }
-
-// ^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$
-
-                      bool isStrong = RegExp(
-                              r"^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
-                          .hasMatch(value);
-
-                      if (!isStrong) {
-                        setState(() {
-                          passwordValidationMessage =
-                              """Please enter a strong password. \nYour password should contain these rules:
-                            
-8 characters length
-2 letters in Upper Case
-1 Special Character (!@#\$&*)
-2 numerals (0-9)
-3 letters in Lower Case
-                            """;
-                        });
-                        return "";
-                      }
-                    },
+                    validator: passwordValidator,
                   ),
 
                   if (passwordValidationMessage != "")
@@ -172,9 +123,10 @@ class _SecondPageState extends State<SecondPage> {
                           passwordValidationMessage,
                           // textAlign: ,
                           style: TextStyle(
-                              color: Colors.red,
-                              // fontWeight:
-                              fontSize: 12,),
+                            color: Colors.red,
+                            // fontWeight:
+                            fontSize: 12,
+                          ),
                         ),
                       ),
                     ),
@@ -201,5 +153,56 @@ class _SecondPageState extends State<SecondPage> {
         ),
       ),
     );
+  }
+
+  String? emailValidator(String? value) {
+    print("value");
+    print(value);
+    if (value == null || value == "") {
+      appStateProvider.setEmailValidationMessage("Please enter email");
+
+      return "";
+    }
+
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(value);
+
+    if (!emailValid) {
+      appStateProvider.setEmailValidationMessage("Please enter a valid email");
+
+      return "";
+    }
+  }
+
+  String? passwordValidator(String? value) {
+    if (value == null || value == "") {
+      setState(() {
+        passwordValidationMessage = "Please enter password";
+      });
+
+      return "";
+    }
+
+// ^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$
+
+    bool isStrong = RegExp(
+            r"^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$")
+        .hasMatch(value);
+
+    if (!isStrong) {
+      setState(() {
+        passwordValidationMessage =
+            """Please enter a strong password. \nYour password should contain these rules:
+                            
+8 characters length
+2 letters in Upper Case
+1 Special Character (!@#\$&*)
+2 numerals (0-9)
+3 letters in Lower Case
+                            """;
+      });
+      return "";
+    }
   }
 }
