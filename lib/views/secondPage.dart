@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:key_sample/providers/appStateProvider.dart';
 import 'package:key_sample/views/thirdPage.dart';
+import 'package:key_sample/widgets/containers/errorMessageContainer.dart';
 import 'package:key_sample/widgets/textFormFields/customTextFormField.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +29,11 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   void dispose() {
+    // provider'ı initState veya dispose'da kullanabilmek için Future.delayed method'undan yararlandık.
+    Future.delayed(Duration(seconds: 0), () {
+      appStateProvider.setEmailValidationMessage("");
+    });
+
     super.dispose();
   }
 
@@ -86,18 +92,12 @@ class _SecondPageState extends State<SecondPage> {
                     validator: emailValidator,
                   ),
                   if (appStateProvider.getEmailValidationMessage != "")
-                    Container(
+                    ErrorMessageContainer(
                       width: width,
-                      // color: Colors.red,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: Text(
+                      passwordValidationMessage:
                           appStateProvider.getEmailValidationMessage,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.red, fontSize: 12),
-                        ),
-                      ),
                     ),
+
                   // Spacer(),
                   SizedBox(
                     height: 10,
@@ -115,21 +115,9 @@ class _SecondPageState extends State<SecondPage> {
                   ),
 
                   if (passwordValidationMessage != "")
-                    Container(
-                      width: width,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: Text(
-                          passwordValidationMessage,
-                          // textAlign: ,
-                          style: TextStyle(
-                            color: Colors.red,
-                            // fontWeight:
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
+                    ErrorMessageContainer(
+                        width: width,
+                        passwordValidationMessage: passwordValidationMessage),
 
                   TextButton(
                     onPressed: () {
