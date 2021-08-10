@@ -1,6 +1,6 @@
 {
-    "name": "key_sample",
-    "short_name": "key_sample",
+    "name": "key_project",
+    "short_name": "key_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

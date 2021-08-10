@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:key_sample/helper/differentPrintHelper.dart';
-import 'package:key_sample/helper/printHelper.dart';
-import 'package:key_sample/helper/uniqueColorGenerator.dart';
-import 'package:key_sample/providers/appStateProvider.dart';
-import 'package:key_sample/views/secondPage.dart';
+import 'package:key_project/helper/differentPrintHelper.dart';
+import 'package:key_project/helper/printHelper.dart';
+import 'package:key_project/helper/uniqueColorGenerator.dart';
+import 'package:key_project/providers/appStateProvider.dart';
+import 'package:key_project/views/secondPage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 

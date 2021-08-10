@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:key_sample/helper/differentPrintHelper.dart';
-import 'package:key_sample/helper/printHelper.dart';
-import 'package:key_sample/helper/uniqueColorGenerator.dart';
+import 'package:key_project/helper/differentPrintHelper.dart';
+import 'package:key_project/helper/printHelper.dart';
+import 'package:key_project/helper/uniqueColorGenerator.dart';
 
 void main() => runApp(MaterialApp(home: PositionedTiles()));
 

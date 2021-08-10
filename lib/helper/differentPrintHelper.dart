@@ -1,4 +1,4 @@
-import 'package:key_sample/helper/printHelper.dart';
+import 'package:key_project/helper/printHelper.dart';
 
 class DiffentPrintHelper extends PrintHelper {
   @override

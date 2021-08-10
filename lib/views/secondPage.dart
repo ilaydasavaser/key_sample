@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:key_sample/providers/appStateProvider.dart';
-import 'package:key_sample/views/thirdPage.dart';
-import 'package:key_sample/widgets/containers/errorMessageContainer.dart';
-import 'package:key_sample/widgets/textFormFields/customTextFormField.dart';
+import 'package:key_project/providers/appStateProvider.dart';
+import 'package:key_project/views/thirdPage.dart';
+import 'package:key_project/widgets/containers/errorMessageContainer.dart';
+import 'package:key_project/widgets/textFormFields/customTextFormField.dart';
 import 'package:provider/provider.dart';
 
 class SecondPage extends StatefulWidget {
