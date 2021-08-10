@@ -19,14 +19,23 @@ class AppStateProvider with ChangeNotifier {
 //     notifyListeners();
 //   }
 
-String _emailValidationMessage = "";
+  String _emailValidationMessage = "";
 
-get getEmailValidationMessage => _emailValidationMessage;
+  get getEmailValidationMessage => _emailValidationMessage;
 
-void setEmailValidationMessage(String message) {
-  _emailValidationMessage = message;
-  notifyListeners();
-}
+  void setEmailValidationMessage(String message) {
+    _emailValidationMessage = message;
+    notifyListeners();
+  }
 
+  late List<TextEditingController> _textEditingControllerList = [];
 
+  List<TextEditingController> get getTextEditingControllerList =>
+      _textEditingControllerList;
+
+  void setTextEditingControllerList(
+      List<TextEditingController> textEditingControllerList) {
+    _textEditingControllerList = textEditingControllerList;
+    notifyListeners();
+  }
 }

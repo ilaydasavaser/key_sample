@@ -12,6 +12,7 @@ class CustomTextFormField extends StatefulWidget {
   // password için alanlar
   final bool? obscureText;
   final String? obscuringCharacter;
+  final TextEditingController? textEditingController;
 
   const CustomTextFormField({
     this.hintText,
@@ -20,6 +21,7 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.obscureText = false,
     this.obscuringCharacter = '*',
+    this.textEditingController,
   });
 
   @override
@@ -44,6 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: TextFormField(
+          controller: widget.textEditingController,
           obscureText: widget.obscureText!,
           obscuringCharacter: widget.obscuringCharacter!,
           keyboardType: widget.keyboardType,
