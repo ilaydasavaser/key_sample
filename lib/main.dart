@@ -61,78 +61,80 @@ class PositionedTilesState extends State<PositionedTiles> {
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: tiles,
-              ),
-              TextButton(
-                onPressed: () {
-                  PrintHelper().customPrint();
-
-                  print("object");
-                },
-                child: Text("Please Press"),
-              ),
-              SizedBox(
-                height: 70,
-              ),
-              Container(
-                height: 70,
-                width: 300,
-                child: TextFormField(
-                  controller: appStateProvider.getTextEditingController,
-
-                  // onChanged: (val) {
-                  //   print(val);
-                  //   appStateProvider.setText(val);
-                  // },
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: tiles,
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Next Page"),
-                  IconButton(
-                    onPressed: () {
-                      print("Navigate To ...");
-                      print(appStateProvider.getTextEditingController.text);
+                TextButton(
+                  onPressed: () {
+                    PrintHelper().customPrint();
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondPage()),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.navigate_next,
+                    print("object");
+                  },
+                  child: Text("Please Press"),
+                ),
+                SizedBox(
+                  height: 70,
+                ),
+                Container(
+                  height: 70,
+                  width: 300,
+                  child: TextFormField(
+                    controller: appStateProvider.getTextEditingController,
+
+                    // onChanged: (val) {
+                    //   print(val);
+                    //   appStateProvider.setText(val);
+                    // },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Next Page"),
+                    IconButton(
+                      onPressed: () {
+                        print("Navigate To ...");
+                        print(appStateProvider.getTextEditingController.text);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SecondPage()),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.navigate_next,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Grid Page"),
-                  IconButton(
-                    onPressed: () {
-                      // navigate
-                      print("navigate to GridViewPage");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => GridViewPage(),
-                        ),
-                      );
-                    },
-                    icon: GridIcon(),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Grid Page"),
+                    IconButton(
+                      onPressed: () {
+                        // navigate
+                        print("navigate to GridViewPage");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GridViewPage(),
+                          ),
+                        );
+                      },
+                      icon: GridIcon(),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
