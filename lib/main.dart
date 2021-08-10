@@ -5,6 +5,7 @@ import 'package:key_project/helper/uniqueColorGenerator.dart';
 import 'package:key_project/providers/appStateProvider.dart';
 import 'package:key_project/views/gridViewPage.dart';
 import 'package:key_project/views/secondPage.dart';
+import 'package:key_project/widgets/icons/gridIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 
@@ -122,20 +123,12 @@ class PositionedTilesState extends State<PositionedTiles> {
                       print("navigate to GridViewPage");
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => GridViewPage()),
+                        MaterialPageRoute(
+                          builder: (context) => GridViewPage(),
+                        ),
                       );
                     },
-                    icon: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: ExactAssetImage(
-                            "assets/icon/grid.png",
-                          ),
-                        ),
-                      ),
-                    ),
+                    icon: GridIcon(),
                   ),
                 ],
               )
