@@ -3,27 +3,25 @@ import 'package:key_project/helper/differentPrintHelper.dart';
 import 'package:key_project/helper/printHelper.dart';
 import 'package:key_project/helper/uniqueColorGenerator.dart';
 import 'package:key_project/providers/appStateProvider.dart';
+import 'package:key_project/views/gridViewPage.dart';
 import 'package:key_project/views/secondPage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 
-void main() 
-
-{
+void main() {
   runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider<AppStateProvider> (create: (context) => AppStateProvider()),
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: PositionedTiles(),
-        ),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AppStateProvider>(
+            create: (context) => AppStateProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: PositionedTiles(),
       ),
-    );
-
+    ),
+  );
 }
-
 
 class PositionedTiles extends StatefulWidget {
   @override
@@ -45,16 +43,13 @@ class PositionedTilesState extends State<PositionedTiles> {
     ),
   ];
 
-late  AppStateProvider appStateProvider;
-
-
-
+  late AppStateProvider appStateProvider;
 
   @override
   Widget build(BuildContext context) {
     // double width = MediaQuery.of(context).size.width;
     // double height = MediaQuery.of(context).size.height;
-appStateProvider = Provider.of<AppStateProvider>(context);
+    appStateProvider = Provider.of<AppStateProvider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -114,6 +109,36 @@ appStateProvider = Provider.of<AppStateProvider>(context);
                   ),
                 ],
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Grid Page"),
+                  IconButton(
+                    onPressed: () {
+                      // navigate
+                      print("navigate to GridViewPage");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => GridViewPage()),
+                      );
+                    },
+                    icon: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: ExactAssetImage(
+                            "assets/icon/grid.png",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
