@@ -8,6 +8,7 @@ import 'package:key_project/views/secondPage.dart';
 import 'package:key_project/widgets/icons/gridIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(
@@ -131,6 +132,32 @@ class PositionedTilesState extends State<PositionedTiles> {
                       },
                       icon: GridIcon(),
                     ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("SVG Sample"),
+                    SvgPicture.asset(
+                      "assets/image/cat.svg",
+                      width: 50,
+                      height: 50,
+                    ),
+                    // Container(
+                    //   height: 50,
+                    //   width: 50,
+                    //   decoration: BoxDecoration(
+                    //     image: DecorationImage(
+                    //       image: ExactAssetImage(
+                    //          "assets/image/cat.png",
+                    //         //"assets/image/cat.svg",
+                    //       ),
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 )
               ],
