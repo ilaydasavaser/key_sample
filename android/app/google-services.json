@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "229756935518",
+    "project_id": "tez2deneme-a504a",
+    "storage_bucket": "tez2deneme-a504a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229756935518:android:814a074590201b2e4043cf",
+        "android_client_info": {
+          "package_name": "com.example.key_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229756935518-5ad66j3pdtdf1cqgfnslg9u4d09qil76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHFmZp99A5l7P7sUvhdPoeHOkbTdBbCOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229756935518-5ad66j3pdtdf1cqgfnslg9u4d09qil76.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

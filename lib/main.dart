@@ -5,13 +5,22 @@ import 'package:key_project/helper/uniqueColorGenerator.dart';
 import 'package:key_project/providers/appStateProvider.dart';
 import 'package:key_project/views/gridViewPage.dart';
 import 'package:key_project/views/secondPage.dart';
+import 'package:key_project/views/thirdPage.dart';
+import 'package:key_project/views/profilePage.dart';
 import 'package:key_project/widgets/icons/gridIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+
+
+
+
 void main() {
   runApp(
+
+
+
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AppStateProvider>(
@@ -19,16 +28,29 @@ void main() {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: PositionedTiles(),
+        home: SecondPage(),
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange)
+                .copyWith(secondary: Colors.orange)),
       ),
     ),
+
+
+
+
+
   );
+
+  
 }
+
 
 class PositionedTiles extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PositionedTilesState();
 }
+
+
 
 class PositionedTilesState extends State<PositionedTiles> {
   List<Widget> tiles = [
@@ -57,7 +79,104 @@ class PositionedTilesState extends State<PositionedTiles> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Prod Environment",
+            "Hosgeldin Babe",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        drawer: Drawer(
+          
+          child: ListView(
+
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text("İlayda Savaşer"),
+                accountEmail: Text("ilayda@gmail.com"),
+                
+              ),
+
+              // drawer: Drawer(
+              // child: ListView(
+              // padding: EdgeInsets.zero,
+              //children: <Widget>[
+              //UserAccountsDrawerHeader(
+              //accountName: Text("İlayda"),
+              //accountEmail: Text("snjfvk@gmail.com"),
+              //currentAccountPicture: CircleAvatar(
+              //backgroundImage: AssetImage("images/catboy.png"),
+              //),
+              //),
+
+              Row(
+                
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Profil"),
+                  IconButton(
+                    onPressed: () {
+                      print(appStateProvider.getTextEditingController.text);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.person,
+                    ),
+                  ),
+                ],
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Çıkış Yap"),
+                  IconButton(
+                    onPressed: () {
+                      print(appStateProvider.getTextEditingController.text);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondPage()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.logout
+                    ),
+                  ),
+                ],
+              ),
+
+              // ListTile(
+
+              // title: Text('Anasayfa'),
+              //leading: Icon(Icons.home),
+              //onTap: () {
+              // Navigator.push(
+              //      context,
+              //    MaterialPageRoute(builder: (context) => PositionedTiles()),
+              //);
+              //},
+              //),
+              //ListTile(
+              //title: Text('Profilim'),
+              //onTap: () {
+              //Navigator.pop(context);
+              //},
+              //leading: Icon(Icons.person),
+              //),
+              //ListTile(
+              //title: Text('Çıkış yap'),
+              //onTap: () {
+              // Navigator.push(
+              //      context,
+              //    MaterialPageRoute(builder: (context) => SecondPage()),
+              //);
+              //},
+              //leading: Icon(Icons.remove_circle),
+              //),
+            ],
           ),
         ),
         body: Padding(
@@ -77,21 +196,42 @@ class PositionedTilesState extends State<PositionedTiles> {
                   },
                   child: Text("Please Press"),
                 ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("SEPET"),
+                    IconButton(
+                      onPressed: () {
+                        print("Urunler kontrol ediliyor ...");
+                        print(appStateProvider.getTextEditingController.text);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ThirdPage()),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.navigate_next,
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(
                   height: 70,
                 ),
-                Container(
-                  height: 70,
-                  width: 300,
-                  child: TextFormField(
-                    controller: appStateProvider.getTextEditingController,
+                //Container(
+                //height: 70,
+                //width: 300,
+                //child: TextFormField(
+                //controller: appStateProvider.getTextEditingController,
 
-                    // onChanged: (val) {
-                    //   print(val);
-                    //   appStateProvider.setText(val);
-                    // },
-                  ),
-                ),
+                // onChanged: (val) {
+                //   print(val);
+                //   appStateProvider.setText(val);
+                // },
+                //),
+                //),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -103,7 +243,7 @@ class PositionedTilesState extends State<PositionedTiles> {
 
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SecondPage()),
+                          MaterialPageRoute(builder: (context) => ThirdPage()),
                         );
                       },
                       icon: Icon(
@@ -140,9 +280,9 @@ class PositionedTilesState extends State<PositionedTiles> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("SVG Sample"),
+                    Text(""),
                     SvgPicture.asset(
-                      "assets/image/cat.svg",
+                      "assets/image/basket.svg",
                       width: 50,
                       height: 50,
                     ),
@@ -165,9 +305,7 @@ class PositionedTilesState extends State<PositionedTiles> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.sentiment_very_satisfied,
-          ),
+          child: Icon(Icons.check),
           onPressed: swapTiles,
         ),
       ),
@@ -184,6 +322,10 @@ class PositionedTilesState extends State<PositionedTiles> {
     });
   }
 }
+
+class Profile {}
+
+class Prouducts {}
 
 class StatefulColorfulTile extends StatefulWidget {
   StatefulColorfulTile({Key? key}) : super(key: key);
@@ -213,3 +355,7 @@ class ColorfulTileState extends State<StatefulColorfulTile> {
     );
   }
 }
+
+
+
+

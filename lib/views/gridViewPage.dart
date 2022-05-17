@@ -41,7 +41,7 @@ class _GridViewPageState extends State<GridViewPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Grid Page"),
+          title: Text("Siparişlerim"),
         ),
         body: appStateProvider.getTextEditingControllerList.length != 50
             ? Container()
@@ -79,7 +79,7 @@ class _GridViewPageState extends State<GridViewPage> {
                             ),
                             Center(
                                 child: Text(
-                              '${index + 1}. lesson',
+                              '${index + 1}. ',
                               style: TextStyle(
                                 color: Colors.white,
                               ),

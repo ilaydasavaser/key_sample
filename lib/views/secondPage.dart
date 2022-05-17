@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:key_project/main.dart';
 import 'package:key_project/providers/appStateProvider.dart';
 import 'package:key_project/views/thirdPage.dart';
 import 'package:key_project/widgets/containers/errorMessageContainer.dart';
@@ -45,10 +46,14 @@ class _SecondPageState extends State<SecondPage> {
     // double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Page"),
+        title: Text("Hos Geldiniz"),
+        
         // title: Text("Second Page"),
         leading: Container(),
       ),
+
+      
+   
       body: Container(
         //height: height,
         // Ögeyi ortalamak için kullanılır.
@@ -64,25 +69,26 @@ class _SecondPageState extends State<SecondPage> {
                   Spacer(),
                   Container(
                     // color: Colors.red,
-                    child: Column(
-                      children: [
-                        Text("Here is second page!"),
-                        Text("Transferred data is: " +
-                            appStateProvider.getTextEditingController.text),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pop(); //Geri gider. İlk sayfaya...
-                          },
-                          child: Text("Back"),
-                        ), // Araya komple boşluk koymamızı sağlar.
-                      ],
+                    //child: Column(
+                      //children: [
+                        //Text("Here is second page!"),
+                        //Text(
+                          //  appStateProvider.getTextEditingController.text),
+                        //TextButton(
+                          //onPressed: () {
+                            //Navigator.of(context)
+                              //  .pop(); //Geri gider. İlk sayfaya...
+                          //},
+                          //child: Text("Back"),
+                        //), // Araya komple boşluk koymamızı sağlar.
+                      //],
                     ),
-                  ),
+                  //),
                   // Spacer(),
                   SizedBox(
                     height: 30,
                   ),
+                  
                   // input alanı sağlar.
 
                   CustomTextFormField(
@@ -126,13 +132,25 @@ class _SecondPageState extends State<SecondPage> {
                       if (_formKey.currentState!.validate()) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ThirdPage()),
+                          MaterialPageRoute(builder: (context) => PositionedTiles()),
+                        );
+                      }
+                    },
+                    child: Text("Login"),
+                  ),
+TextButton(
+                    onPressed: () {
+                      print("register pressed");
+
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PositionedTiles()),
                         );
                       }
                     },
                     child: Text("Register"),
                   ),
-
                   Spacer(),
                 ],
               ),

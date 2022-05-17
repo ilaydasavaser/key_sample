@@ -13,7 +13,7 @@ class AppStateProvider with ChangeNotifier {
 //   String _text = "";
 //   get getText => _text;
 
-// // void yazılsa güzel olur.
+
 //     setText(String text) {
 //     _text = text;
 //     notifyListeners();

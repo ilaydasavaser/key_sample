@@ -7,7 +7,7 @@ class DiffentPrintHelper extends PrintHelper {
     // TODO: implement customPrint
     // return super.customPrint();
 
-    print("111 ");
+    print("111");
     print("222");
   }
 }

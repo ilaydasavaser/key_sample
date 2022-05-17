@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="Layer_1" version="1.1" xml:space="preserve" viewBox="0 0 245 216" enable-background="new 0 0 245 216" y="0px" x="0px">
+<path stroke="#000" d="m59.667 155.67l-0.667 14.66 10.667 5.67 147.33 0.33 9 4s2 0 3-2-0.666-4.667-0.666-4.667l-11.334-3-145.33-1.333-12.003-13.66z" fill="#646464"/>
+<path stroke="#000" d="m11.701 10.388s6.529-7.56 15.808-7.56 36.426 30.928 36.426 30.928l-8.935 8.935s-15.808-32.646-27.148-32.646-11.34 4.124-11.34 4.124l-4.811-3.781z" fill="#646464"/>
+<circle stroke="#000" cx="10.483" r="7.809" cy="13.387" fill="#970000"/>
+<polygon stroke="#000" points="55.5 159.12 54.656 176.98 60.155 176.98 64.966 159.46 186.62 159.5 189.71 177.33 195.55 177.33 195.89 159.08" fill="#646464"/>
+<circle stroke="#000" cx="46.784" r="17.182" cy="195.96"/>
+<circle stroke-width=".76" stroke="#000" cy="195.96" cx="46.99" r="13.058" fill="#0095FF"/>
+<path stroke="#000" d="m54.656 177.74h5.499l-1.375 13.402-9.966 9.966s-4.811-0.001-6.529-2.063 0.344-7.216 0.344-7.216l9.278-6.529 2.749-7.56z" fill="#646464"/>
+<circle stroke="#000" cx="181.84" r="17.183" cy="195.96"/>
+<circle stroke-width=".76" stroke="#000" cy="195.96" cx="182.04" r="13.058" fill="#0095FF"/>
+<path stroke="#000" d="m189.71 177.74h5.499l-1.374 13.402-9.967 9.966s-4.811-0.001-6.529-2.063 0.344-7.216 0.344-7.216l9.279-6.529 2.75-7.56z" fill="#646464"/>
+<rect height="125.77" width="9.278" stroke="#646464" y="33.756" x="55.344" fill="#646464"/>
+<polygon stroke="#646464" points="200.81 154.38 55.344 154.38 55.344 159.53 198.41 159.53" fill="#646464"/>
+<polygon stroke="#646464" points="64.622 33.756 63.591 38.223 241.6 47.502 243.66 43.034" fill="#646464"/>
+<polygon stroke="#646464" points="243.66 43.034 198.99 159.53 193.14 159.53 238.5 44.065" fill="#646464"/>
+<line stroke-width="10" y2="156" y1="38.667" stroke="#646464" x2="91.833" x1="91.167" fill="#646464"/>
+<line stroke-width="10" y2="155.67" y1="39.334" stroke="#646464" x2="118.83" x1="118.17" fill="#646464"/>
+<line stroke-width="10" y2="156.33" y1="39.999" stroke="#646464" x2="145.17" x1="144.5" fill="#646464"/>
+<line stroke-width="10" y2="156.33" y1="39.999" stroke="#646464" x2="172.5" x1="171.83" fill="#646464"/>
+<line stroke-width="10" y2="64.334" y1="60.667" stroke="#646464" x2="232.67" x1="59.667" fill="#646464"/>
+<line stroke-width="10.064" y2="101.33" y1="95.667" stroke="#646464" x2="218.67" x1="60.333" fill="#646464"/>
+<line stroke-width="10" y2="137" y1="133" stroke="#646464" x2="204.67" x1="60" fill="none"/>
+<line stroke-width="10.064" y2="136.67" y1="44.334" stroke="#646464" x2="199" x1="199.33" fill="#646464"/>
+<polyline stroke="#000" points="55 42.333 55.344 159.53 198.99 159.53 243.66 43.034 63 32.667" fill="none"/>
+<metadata><rdf:RDF><cc:Work><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/><dc:publisher><cc:Agent rdf:about="http://openclipart.org/"><dc:title>Openclipart</dc:title></cc:Agent></dc:publisher><dc:title>Basic Shopping Cart</dc:title><dc:date>2013-02-27T16:19:51</dc:date><dc:description>A basic shopping cart drawing to use as an icon or whatever</dc:description><dc:source>http://openclipart.org/detail/175346/basic-shopping-cart-by-mgatessinc-175346</dc:source><dc:creator><cc:Agent><dc:title>MGatESSInc</dc:title></cc:Agent></dc:creator><dc:subject><rdf:Bag><rdf:li>basket</rdf:li><rdf:li>cart</rdf:li><rdf:li>clip art</rdf:li><rdf:li>clipart</rdf:li><rdf:li>ecommerce</rdf:li><rdf:li>shop</rdf:li><rdf:li>shopper</rdf:li><rdf:li>shopping cart</rdf:li><rdf:li>supermarket</rdf:li></rdf:Bag></dc:subject></cc:Work><cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/"><cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/><cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/><cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/></cc:License></rdf:RDF></metadata></svg>
