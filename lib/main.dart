@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:key_project/helper/differentPrintHelper.dart';
 import 'package:key_project/helper/printHelper.dart';
@@ -16,7 +17,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 
 
-void main() {
+void main() async {
+
+ WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+
+
   runApp(
 
 
