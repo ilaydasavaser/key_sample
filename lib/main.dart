@@ -13,21 +13,11 @@ import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
-
-
-
 void main() async {
-
- WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-
-
   runApp(
-
-
-
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AppStateProvider>(
@@ -41,23 +31,13 @@ void main() async {
                 .copyWith(secondary: Colors.orange)),
       ),
     ),
-
-
-
-
-
   );
-
-  
 }
-
 
 class PositionedTiles extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PositionedTilesState();
 }
-
-
 
 class PositionedTilesState extends State<PositionedTiles> {
   List<Widget> tiles = [
@@ -91,15 +71,12 @@ class PositionedTilesState extends State<PositionedTiles> {
           ),
         ),
         drawer: Drawer(
-          
           child: ListView(
-
             padding: EdgeInsets.zero,
             children: <Widget>[
               UserAccountsDrawerHeader(
                 accountName: Text("İlayda Savaşer"),
                 accountEmail: Text("ilayda@gmail.com"),
-                
               ),
 
               // drawer: Drawer(
@@ -115,7 +92,6 @@ class PositionedTilesState extends State<PositionedTiles> {
               //),
 
               Row(
-                
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Profil"),
@@ -148,9 +124,7 @@ class PositionedTilesState extends State<PositionedTiles> {
                         MaterialPageRoute(builder: (context) => SecondPage()),
                       );
                     },
-                    icon: Icon(
-                      Icons.logout
-                    ),
+                    icon: Icon(Icons.logout),
                   ),
                 ],
               ),
@@ -362,7 +336,3 @@ class ColorfulTileState extends State<StatefulColorfulTile> {
     );
   }
 }
-
-
-
-

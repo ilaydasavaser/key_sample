@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "229756935518",
-    "project_id": "tez2deneme-a504a",
-    "storage_bucket": "tez2deneme-a504a.appspot.com"
+    "project_number": "1004191816669",
+    "project_id": "flutteruyg",
+    "storage_bucket": "flutteruyg.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:229756935518:android:814a074590201b2e4043cf",
+        "mobilesdk_app_id": "1:1004191816669:android:2200c3f7c88d0912a47434",
         "android_client_info": {
           "package_name": "com.example.key_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "229756935518-5ad66j3pdtdf1cqgfnslg9u4d09qil76.apps.googleusercontent.com",
+          "client_id": "1004191816669-ckaasahi5d8pn1qpmsvt6gov825e255m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBHFmZp99A5l7P7sUvhdPoeHOkbTdBbCOE"
+          "current_key": "AIzaSyCb4S6t1nmNv4URjPGwyBe0cpTHNQPsc8U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "229756935518-5ad66j3pdtdf1cqgfnslg9u4d09qil76.apps.googleusercontent.com",
+              "client_id": "1004191816669-ckaasahi5d8pn1qpmsvt6gov825e255m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
