@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:key_project/db/db_references.dart';
 import 'package:key_project/db/models.dart';
+import 'package:key_project/services/http_service.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -25,6 +26,7 @@ class _ThirdPageState extends State<ThirdPage> {
     super.dispose();
   }
 
+List<Product> productList = [];
 // MovieQuery query = MovieQuery.year;
 
   @override
@@ -37,7 +39,7 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
       ),
       body: Container(
-        height: 400,
+        //height: 400,
         //height: height,
         // Ögeyi ortalamak için kullanılır.
         child: Column(
@@ -59,10 +61,14 @@ class _ThirdPageState extends State<ThirdPage> {
 
                   final data = snapshot.requireData;
 
+                  for (var element in data.docs) {
+                    productList.add(element.data());
+                  }
+
                   return ListView.builder(
                     itemCount: data.size,
                     itemBuilder: (context, index) {
-                      return _ProductItem(data.docs[index].data());
+                      return _ProductItem(productList[index]);
                     },
                   );
                 },
@@ -102,7 +108,19 @@ class _ThirdPageState extends State<ThirdPage> {
             height: 30,
           ),
         ),
-        onPressed: () async {},
+        onPressed: () async {
+List<Product> selectedProductList = [];
+productList.forEach((element) { if (element.isSelected == true) {print(element.name);
+
+selectedProductList.add(element);
+}});
+
+
+HttpService().postProduct(selectedProductList
+
+
+);
+        },
       ),
     );
   }
