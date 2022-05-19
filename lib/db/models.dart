@@ -1,5 +1,3 @@
-
-
 class Movie {
   Movie({
     required this.genre,
@@ -46,20 +44,17 @@ class Movie {
 class Product {
   Product({
     required this.name,
-   
   });
 
   Product.fromJson(Map<String, Object?> json)
       : this(
-        
-          name: json['Name']! as String,
-        
+          name: json['Name'] as String,
         );
 
   final String name;
-   Map<String, Object?> toJson() {
+  Map<String, Object?> toJson() {
     return {
       'Name': name,
-     };
+    };
   }
 }

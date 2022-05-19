@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:key_project/db/firebase_config.dart';
 import 'package:key_project/helper/differentPrintHelper.dart';
 import 'package:key_project/helper/printHelper.dart';
 import 'package:key_project/helper/uniqueColorGenerator.dart';
@@ -10,12 +11,11 @@ import 'package:key_project/views/thirdPage.dart';
 import 'package:key_project/views/profilePage.dart';
 import 'package:key_project/widgets/icons/gridIcon.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseConfig.platformOptions);
 
   runApp(
     MultiProvider(

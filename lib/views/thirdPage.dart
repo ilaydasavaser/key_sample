@@ -8,9 +8,6 @@ class ThirdPage extends StatefulWidget {
 
   @override
   _ThirdPageState createState() => _ThirdPageState();
-
-  
-
 }
 
 class _ThirdPageState extends State<ThirdPage> {
@@ -20,9 +17,7 @@ class _ThirdPageState extends State<ThirdPage> {
     getData();
   }
 
-  getData() {
-
-  }
+  getData() {}
 
   @override
   void dispose() {
@@ -33,8 +28,6 @@ class _ThirdPageState extends State<ThirdPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -43,109 +36,94 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
       ),
       body: Container(
-        
-        height:400,
+        height: 400,
         //height: height,
         // Ögeyi ortalamak için kullanılır.
         child: Column(
           children: [
-        Container(
-          height:200,
-
-          child: StreamBuilder<QuerySnapshot<Product>>(
-          stream: productRef.snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
-            }
-
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            final data = snapshot.requireData;
-
-            return ListView.builder(
-              itemCount: data.size,
-              itemBuilder: (context, index) {
-                return _MovieItem(
-                  data.docs[index].data(),
-                  data.docs[index].reference,
-                );
-              },
-            );
-          },
-      ),
-        ),
-    
             Container(
-              height:200,
-              child: ListView.builder(itemCount:5, itemBuilder:(context, index) {
-                return ListTile(
-                  title: Text("title"),
-                  subtitle: Text("title"),
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.orange,
-                  ),
-                );
-              }),
+              height: 200,
+              child: StreamBuilder<QuerySnapshot<Product>>(
+                stream: productRef.snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text(snapshot.error.toString()),
+                    );
+                  }
+
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  final data = snapshot.requireData;
+
+                  return ListView.builder(
+                    itemCount: data.size,
+                    itemBuilder: (context, index) {
+                      return _ProductItem(
+                        data.docs[index].data(),
+                        data.docs[index].reference,
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            Container(
+              height: 200,
+              child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text("title"),
+                      subtitle: Text("title"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.orange,
+                      ),
+                    );
+                  }),
             ),
           ],
         ),
-          //child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            //children: [
-              //SizedBox(
-                //height: 550,
-              //),
-              
-             // Row(mainAxisAlignment: MainAxisAlignment.end, 
-              //children: [
-                //IconButton(
-                    //icon: SvgPicture.asset(
-                      //"assets/image/basket.svg",
-                      //width: 50,
-                      //height: 50,
-                    //),
-                    //onPressed:() {
-                      // Navigator.push(
-                        //  context,
-                          //MaterialPageRoute(builder: (context) => ProductPage()),
-                        //);
-                      //},
-                    //),
-                // Text(""),
+        //child: Column(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        //children: [
+        //SizedBox(
+        //height: 550,
+        //),
 
-                
-              ),
-
-              floatingActionButton: FloatingActionButton(
-                onPressed: ()async{
-
-                  
-
-              },
-              ) ,
-            
-          
+        // Row(mainAxisAlignment: MainAxisAlignment.end,
+        //children: [
+        //IconButton(
+        //icon: SvgPicture.asset(
+        //"assets/image/basket.svg",
+        //width: 50,
+        //height: 50,
+        //),
+        //onPressed:() {
+        // Navigator.push(
+        //  context,
+        //MaterialPageRoute(builder: (context) => ProductPage()),
+        //);
+        //},
+        //),
+        // Text(""),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {},
+      ),
     );
-        
-      
-    
   }
 }
 
-
-class _MovieItem extends StatelessWidget {
-  _MovieItem(this.product, this.reference);
+class _ProductItem extends StatelessWidget {
+  _ProductItem(this.product, this.reference);
 
   final Product product;
   final DocumentReference<Product> reference;
 
   /// Returns the movie poster.
- 
 
   /// Returns movie details.
   Widget get details {
@@ -155,8 +133,6 @@ class _MovieItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           title,
-         
-         
         ],
       ),
     );
@@ -171,9 +147,9 @@ class _MovieItem extends StatelessWidget {
   }
 
   /// Returns metadata about the movie.
- 
+
   /// Returns a list of genre movie tags.
- 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
