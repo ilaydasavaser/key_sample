@@ -44,17 +44,21 @@ class Movie {
 class Product {
   Product({
     required this.name,
+    this.isSelected,
   });
 
   Product.fromJson(Map<String, Object?> json)
       : this(
           name: json['Name'] as String,
+          isSelected: json['isSelected'] as bool?,
         );
 
   final String name;
+   bool? isSelected;
   Map<String, Object?> toJson() {
     return {
       'Name': name,
+      'isSelected': isSelected,
     };
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:key_project/db/db_references.dart';
 import 'package:key_project/db/models.dart';
 
@@ -41,8 +42,8 @@ class _ThirdPageState extends State<ThirdPage> {
         // Ögeyi ortalamak için kullanılır.
         child: Column(
           children: [
-            Container(
-              height: 200,
+            Expanded(
+              // height: 200,
               child: StreamBuilder<QuerySnapshot<Product>>(
                 stream: productRef.snapshots(),
                 builder: (context, snapshot) {
@@ -61,28 +62,11 @@ class _ThirdPageState extends State<ThirdPage> {
                   return ListView.builder(
                     itemCount: data.size,
                     itemBuilder: (context, index) {
-                      return _ProductItem(
-                        data.docs[index].data(),
-                        data.docs[index].reference,
-                      );
+                      return _ProductItem(data.docs[index].data());
                     },
                   );
                 },
               ),
-            ),
-            Container(
-              height: 200,
-              child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text("title"),
-                      subtitle: Text("title"),
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.orange,
-                      ),
-                    );
-                  }),
             ),
           ],
         ),
@@ -111,18 +95,29 @@ class _ThirdPageState extends State<ThirdPage> {
         // Text(""),
       ),
       floatingActionButton: FloatingActionButton(
+        child: Container(
+          child: SvgPicture.asset(
+            "assets/image/basket.svg",
+            width: 30,
+            height: 30,
+          ),
+        ),
         onPressed: () async {},
       ),
     );
   }
 }
 
-class _ProductItem extends StatelessWidget {
-  _ProductItem(this.product, this.reference);
+class _ProductItem extends StatefulWidget {
+  _ProductItem(this.product);
 
   final Product product;
-  final DocumentReference<Product> reference;
 
+  @override
+  State<_ProductItem> createState() => _ProductItemState();
+}
+
+class _ProductItemState extends State<_ProductItem> {
   /// Returns the movie poster.
 
   /// Returns movie details.
@@ -132,7 +127,23 @@ class _ProductItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          title,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                title,
+                Checkbox(
+                    value: widget.product.isSelected == true,
+                    onChanged: (val) {
+                      setState(() {
+                        widget.product.isSelected = val;
+                      });
+                    })
+              ],
+            ),
+          ),
+          Divider()
         ],
       ),
     );
@@ -141,7 +152,7 @@ class _ProductItem extends StatelessWidget {
   /// Return the movie title.
   Widget get title {
     return Text(
-      '${product.name}',
+      '${widget.product.name}',
       style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     );
   }
